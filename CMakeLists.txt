@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project( tracking )
+SET(CMAKE_CXX_FLAGS "-std=c++0x")
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/local/lib/cmake/)
 find_package( raspicam REQUIRED )
 include_directories(${raspicam_INCLUDE_DIRS})

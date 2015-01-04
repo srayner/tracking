@@ -24,7 +24,7 @@ int main(int argc, char** argv )
         if (arg == "-c") {
 
             namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
-            
+
             //Create trackbars in "Control" window
             cvCreateTrackbar("LowB", "Control", &iLowB, 255); //Hue (0 - 179)  //blue
             cvCreateTrackbar("HighB", "Control", &iHighB, 255);
@@ -101,13 +101,11 @@ int main(int argc, char** argv )
         // Draw bounding circle of largest object detected.
         if (largest > -1) {
             Scalar color = Scalar(0, 255, 0); // green
+            Point2f pt = center[largest];
+            string txt = std::to_string(pt.x);
             circle(imgOriginal, center[largest], (int)radius[largest], color, 2, 8, 0);
+            putText(imgOriginal, txt, pt, FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 255, 0), 1);
         }
-
-        // Draw text
-        CvPoint pt = cvPoint(center[largest].x, center[largest].y);
-        string txt = std::to_string(pt.x);
-        putText(imgOriginal, txt, pt, FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 255, 0), 1);
 
         // Show the original image with circle(s) overlaid.
         imshow("Display Image", imgOriginal);
