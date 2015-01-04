@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8)
+project( tracking )
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/local/lib/cmake/)
+find_package( raspicam REQUIRED )
+include_directories(${raspicam_INCLUDE_DIRS})
+find_package( OpenCV REQUIRED )
+add_executable( tracking tracking.cpp )
+target_link_libraries ( tracking ${raspicam_CV_LIBS})
